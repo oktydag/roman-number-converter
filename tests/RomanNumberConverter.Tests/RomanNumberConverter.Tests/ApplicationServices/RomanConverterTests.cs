@@ -20,9 +20,9 @@ namespace RomanNumberConverter.Tests.ApplicationServices
         public void When_Number_Is_Given_Should_Return_Roman_Number(string number, string expected)
         {
             Numeric testNumber = new Numeric(number);
-            RomanConverter romanConverter = new RomanConverter(testNumber.Number);
+            RomanConverter romanConverter = new RomanConverter();
 
-            var convertedValue = romanConverter.ToRoman();
+            var convertedValue = romanConverter.ToRoman(testNumber.Number);
 
             convertedValue.Should().BeEquivalentTo(expected);
         }

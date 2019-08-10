@@ -19,10 +19,10 @@ namespace RomanConsoleApp
                     Numeric numeric = new Numeric(input);
 
                     //ApplicationService
-                    RomanConverter romanConverter = new RomanConverter(numeric.Number);
+                    RomanConverter romanConverter = new RomanConverter();
 
                     // UserInterface
-                    Console.WriteLine(input.ToString() + " --> " + romanConverter.ToRoman() + "\n");
+                    Console.WriteLine(input.ToString() + " --> " + romanConverter.ToRoman(numeric.Number) + "\n");
 
                     SeperateEachResult();
                 }

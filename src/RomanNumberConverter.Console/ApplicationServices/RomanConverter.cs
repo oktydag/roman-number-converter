@@ -10,14 +10,14 @@ namespace RomanNumberConverter.Console.ApplicationServices
     {
         private readonly string _number;
 
-        public RomanConverter(string number)
+        public RomanConverter()
         {
-            _number = number;
+           
         }
 
-        public string ToRoman()
+        public string ToRoman(string number)
         {
-            return InternalOfConverterRoman(Convert.ToInt32(_number));
+            return InternalOfConverterRoman(Convert.ToInt32(number));
         }
 
         private static string InternalOfConverterRoman(int number)

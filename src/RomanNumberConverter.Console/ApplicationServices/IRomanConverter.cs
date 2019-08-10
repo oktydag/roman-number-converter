@@ -8,6 +8,6 @@ namespace RomanNumberConverter.Console.ApplicationServices
 {
    public interface IRomanConverter
    {
-       string ToRoman();
+       string ToRoman(string number);
    }
 }
