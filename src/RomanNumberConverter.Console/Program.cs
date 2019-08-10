@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net.Mime;
+using Autofac;
 using RomanNumberConverter.Console.ApplicationServices;
 using RomanNumberConverter.Console.Domain;
 
@@ -8,6 +10,9 @@ namespace RomanConsoleApp
     {
         public static void Main(string[] args)
         {
+            // Dependency Injection
+            IContainer serviceProvider = BuildServiceProvider();
+
             while (true)
             {
                 try
@@ -19,10 +24,10 @@ namespace RomanConsoleApp
                     Numeric numeric = new Numeric(input);
 
                     //ApplicationService
-                    RomanConverter romanConverter = new RomanConverter();
+                    var romanConverterService = serviceProvider.Resolve<IRomanConverter>();
 
                     // UserInterface
-                    Console.WriteLine(input.ToString() + " --> " + romanConverter.ToRoman(numeric.Number) + "\n");
+                    Console.WriteLine(input.ToString() + " --> " + romanConverterService.ToRoman(numeric.Number) + "\n");
 
                     SeperateEachResult();
                 }
@@ -31,6 +36,13 @@ namespace RomanConsoleApp
                     Console.WriteLine($"Error: {ex.Message} ");
                 }
             }
+        }
+
+        private static IContainer BuildServiceProvider()
+        {
+            var builder = new ContainerBuilder();
+            builder.RegisterType<RomanConverter>().As<IRomanConverter>();
+            return builder.Build();
         }
 
         private static void SeperateEachResult()
