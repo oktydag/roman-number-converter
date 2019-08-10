@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationServices\IRomanConverter.cs" />
+    <Compile Include="ApplicationServices\RomanConverter.cs" />
     <Compile Include="Domain\Numberic.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
